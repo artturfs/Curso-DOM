@@ -15,7 +15,27 @@
         <img src='http://files.cod3r.com.br/curso-web/logo-estreita.png' alt='logo'>
     </div>
     <script>
-        // ...
+        const img = document.querySelector('img')
+        console.log('getAttribute', img.getAttribute('src')) // getAttribute() retorna o valor do atributo
+        console.log('src', img.src) // src é um atributo do elemento <img>
+        console.log('["src"]', img['src']) 
+        console.log(img.getAttribute('alt'))
+
+        console.log('Elemento "img"..................')
+        console.log('NodeType', img.nodeType) // nodeType é um atributo de TODOS os nós (elementos, textos, etc)
+        console.log('NodeName', img.nodeName) // nodeName é o nome do nó (tag para elementos
+        
+        const src = img.getAttribute('src')
+        console.log('Atributo "src"..................')
+        console.log('NodeType', src.nodeType) // Strings não possuem nodeType → undefined
+        console.log('NodeName', src.name) // Não existem .name e .value porque src não é um nó Attribute
+        console.log('NodeValue', src.value)
+        
+        const link = document.querySelector('a')
+        console.log('Elemento "a"...............')
+        console.log('href', link.href)
+        console.log('firstChild.nodeType', link.firstChild.nodeType)
+        link.firstChild.nodeValue = 'Novo Texto'
     </script>
 </body>
 

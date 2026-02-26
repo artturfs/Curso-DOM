@@ -22,7 +22,39 @@
         <p>Fim</p>
     </div>
     <script>
-        // ...
+        function log() {
+            console.log(this)
+        }
+
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul')
+        lista.parentNode.log() // parentNode retorna o nó pai do <ul> (normalmente a <div>)
+        lista.childNodes.log() // childNodes retorna TODOS os nós filhos do <ul>
+        // incluindo textos (espaços/quebras de linha) e elementos
+
+        const primeiro = lista.firstChild
+        primeiro.log()
+        primeiro.nextSibling.log() // nextSibling retorna o próximo nó no mesmo nível
+        // também pode ser texto ou elemento
+
+        const ultimo = lista.lastChild // lastChild retorna o ÚLTIMO nó filho do <ul>
+        // geralmente também pode ser um nó de texto
+        ultimo.log()
+        ultimo.previousSibling.log()
+
+        lista.children.log() // children retorna SOMENTE os elementos HTML filhos (ignora textos)
+        lista.firstElementChild.log() // firstElementChild retorna o primeiro FILHO QUE É ELEMENTO
+        lista.lastElementChild.log() // lastElementChild retorna o último FILHO QUE É ELEMENTO
+        lista.parentNode.previousElementSibling.log()
+        // previousElementSibling retorna o elemento anterior ao pai do <ul>
+        // (ignora nós de texto)
+        lista.parentNode.nextElementSibling.log() // nextElementSibling retorna o próximo elemento após o pai do <ul>
+
+        document.querySelectorAll('div ul li').log()
     </script>
 </body>
 
