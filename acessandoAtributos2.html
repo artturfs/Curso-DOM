@@ -17,7 +17,54 @@
         </ul>
     </div>
     <script>
-        // ...
+        const lista = document.querySelector('div ul[destino="escritório"]')
+
+        console.log('Elemento "ul"...............')
+
+        // childNodes retorna TODOS os nós filhos
+        // inclui elementos, textos (espaços/quebras de linha)
+        console.log('childNodes', lista.childNodes)
+
+        // Atributos personalizados NÃO viram propriedades automaticamente
+        // por isso lista.destino é undefined
+        console.log('destino', lista.destino)
+
+        // getAttribute() lê exatamente o valor do atributo no HTML
+        console.log('getAttribute', lista.getAttribute('destino'))
+
+        // hasAttribute() verifica se o atributo existe no elemento
+        console.log('hasAttribute', lista.hasAttribute('destino'))
+
+        // setAttribute() cria ou altera atributos no HTML
+        lista.setAttribute('destino', 'empresa')
+        lista.setAttribute('status', 'aberto')
+
+        // removeAttribute() remove o atributo do elemento
+        lista.removeAttribute('destino')
+
+
+        // dataset acessa atributos data-* como propriedades JS
+        // data-urgencia → dataset.urgencia
+        console.log(lista.dataset.urgencia)
+
+        // Alterar dataset altera diretamente o atributo data-*
+        lista.dataset.urgencia = 4
+
+        // Confirma que o atributo foi alterado no HTML
+        console.log(lista.getAttribute('data-urgencia'))
+
+
+        // ⚠️ cuidado com atributos que viram propriedades com nomes diferentes
+        const label = document.querySelector('label')
+
+        // for é palavra reservada no JS → não funciona como propriedade
+        console.log(label.for) // undefined
+
+        // htmlFor é a propriedade correta no DOM
+        console.log(label.htmlFor)
+
+        // getAttribute() sempre lê o valor direto do HTML
+        console.log(label.getAttribute('for'))
     </script>
 </body>
 

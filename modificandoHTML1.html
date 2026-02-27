@@ -9,7 +9,31 @@
 
 <body class='conteudo exercicio'>
     <script>
-        // ...
+        const body = document.querySelector('body')
+
+        const div1 = document.createElement('div')
+        div1.classList.add('destaque')
+        div1.innerHTML = 'Primeiro'
+
+        const div2 = document.createElement('div')
+        div2.setAttribute('wm-atributo', 'valor') // setAttribute cria um atributo personalizado no HTML
+        div2.innerHTML = 'Segundo'
+
+        const p = document.createElement('p')
+        p.innerHTML = 'Terceiro'
+        const div3 = document.createElement('div')
+        div3.appendChild(p) // appendChild move o nó para dentro do novo elemento (p sai do documento e entra em div3)
+
+        body.appendChild(div1)
+        body.appendChild(div2)
+        body.appendChild(div3)
+
+        const texto = document.createTextNode('Antes...') // createTextNode cria um nó de texto que pode ser inserido no documento
+        div3.insertBefore(texto, div3.childNodes[0]) // insertBefore insere o nó antes do nó de referência (texto é inserido antes do primeiro filho de div3)
+
+        const div4 = div3.cloneNode(true) // cloneNode(true) clona o elemento e todos os seus filhos (true = deep clone)
+        body.appendChild(div4) 
+        body.removeChild(div3) // removeChild remove o elemento do documento (div3 é removida, mas div4 continua porque é um clone)
     </script>
 </body>
 

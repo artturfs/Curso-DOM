@@ -10,6 +10,27 @@
 <body class="conteudo exercicio">
     <div>Elemento</div>
     <script>
-        // ...
+        const item = document.querySelector('div')
+
+        // position absolute permite mover o elemento livremente pela tela
+        item.style.position = 'absolute'
+
+        // onmousemove executa sempre que o mouse se move sobre o elemento
+        item.onmousemove = e => {
+            const item = e.target
+
+            // muda o cursor para indicar que o elemento pode ser arrastado
+            item.style.cursor = 'move'
+
+            // e.buttons verifica se algum botão do mouse está pressionado
+            // (1 = botão esquerdo pressionado)
+            if (e.buttons) {
+
+                // clientX e clientY são as posições do mouse na tela (viewport)
+                // subtrair metade do tamanho centraliza o elemento no cursor
+                item.style.top = `${e.clientY - (item.clientHeight / 2)}px`
+                item.style.left = `${e.clientX - (item.clientWidth / 2)}px`
+            }
+        }
     </script>
 </body>
